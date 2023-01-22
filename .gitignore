@@ -1,2 +1,5 @@
+*~
+auto-save*
 elpa/
-.emacs.desktop
+elpy/
+.emacs.desktop*
