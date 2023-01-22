@@ -9,7 +9,9 @@
 (defvar packages-list
   '(
     auctex
+    conda
     elpy
+    exec-path-from-shell
     markdown-mode
     ess
     polymode
@@ -34,6 +36,8 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;; Auto-added
 (custom-set-variables
@@ -73,6 +77,9 @@
 (elpy-enable)
 (setq python-shell-completion-native-enable nil)
 (setq elpy-rpc-python-command "python3")
+(setq
+ conda-anaconda-home (expand-file-name "~/opt/miniconda3")
+ conda-env-home-directory (expand-file-name "~/opt/miniconda3"))
 ;; C-RET does not work in a remote terminal session, add M-RET as an alternative
 (eval-after-load "elpy"
   '(progn
